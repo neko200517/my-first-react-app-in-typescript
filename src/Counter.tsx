@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-// 71. useRefのより実践的な使い方とOptional ChaningとNon-Null Assertion Operatorの紹介
+// 72. useReducerとオーバーロードを用いたその型定義について
 
 const Counter: React.FC<{}> = () => {
   const initialValue: any = 0;
@@ -22,12 +22,12 @@ const Counter: React.FC<{}> = () => {
   // Non-Null Assertion Operator
   const ref = useRef<HTMLInputElement>(null!);
 
-  const focusRef = () => {
+  const focusInput = () => {
     // 1. basic
     // const current = ref.current;
     // if (current != null) current.focus();
 
-    // 2. Optinal Chaning
+    // 2. Optional Chaning
     // ref.current?.focus();
 
     // 3. Non-Null Assertion Operator
@@ -39,9 +39,10 @@ const Counter: React.FC<{}> = () => {
       <div>value: {value}</div>
       <button onClick={increment}>+1</button>
       <button onClick={decrement}>-1</button>
-      <div>This component was re-rendered {renderTimes.current} times!</div>
+      <div>This Componnet was re-redered {renderTimes.current} times!</div>
+
       <input ref={ref} type='text' />
-      <button onClick={focusRef}>Click Me!</button>
+      <button onClick={focusInput}>Click Me</button>
     </div>
   );
 };
