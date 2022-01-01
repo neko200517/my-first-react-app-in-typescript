@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-// 71. useRefのより実践的な使い方とOptinal ChainingとNon-Null Assertion Operator
+// 72. useReducerとオーバーロードを用いたその型定義について
 
 const Counter: React.FC<{}> = () => {
   const initialValue: any = 0;
@@ -20,19 +20,17 @@ const Counter: React.FC<{}> = () => {
   });
 
   // Non-Null Assertion Operator
-  // null!にするとnullでないことを明示できる
   const ref = useRef<HTMLInputElement>(null!);
 
   const focusInput = () => {
-    // 1. Nullを否定した標準的な書き方
+    // 1. basic
     // const current = ref.current;
     // if (current != null) current.focus();
 
     // 2. Optional Chaning
-    // 上記はこのように書き換えられる(!null)
     // ref.current?.focus();
 
-    // 3. Non-Null Assertion Operatorを使用することによりnullが否定され、シンプルに実装するこができる
+    // 3. Non-Null Assertion Operator
     ref.current.focus();
   };
 
